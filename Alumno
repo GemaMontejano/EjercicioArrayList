@@ -1,0 +1,35 @@
+package EjercicioArrayList;
+
+public class Alumno {
+
+		private String nombre;
+		private double nota;
+
+		public Alumno(String nombre, double nota) {
+			this.setNombre(nombre);
+			this.setNota(nota);
+		}
+
+		protected String getNombre() {
+			return nombre;
+		}
+
+		protected void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+
+		protected double getNota() {
+			return nota;
+		}
+
+		protected void setNota(double nota) {
+			this.nota = nota;
+		}
+
+		@Override
+		public String toString() {
+			return "Alumno [nombre=" + this.nombre + ", nota=" + this.nota + "]";
+		}
+	
+
+}
