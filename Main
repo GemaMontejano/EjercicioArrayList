@@ -1,0 +1,59 @@
+package EjercicioArrayList;
+
+	import java.util.Arrays;
+
+
+	public class Main {
+
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			Aula biologia = new Aula("Biología");
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 1", 9.85));
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 2", 4.5));
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 3", 5));
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 4", 3.45));
+			comprobarResultado(biologia);
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 5", 9.88));
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 6", 3.43));
+			comprobarResultado(biologia);
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 7", 2.1));
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 8", 8.23));
+			comprobarResultado(biologia);
+			System.out.println("Nuevo alumno añadido en posición " + biologia.AddAlumno("Alumno 9", 6.34));
+			System.out.println(
+					"La posición es " + biologia.AddAlumno("Alumno 10", 4.5) + ", por tanto no caben más alumnos.");
+			System.out
+					.println("La posición es " + biologia.AddAlumno("Alumno 11", 9) + ", por tanto no caben más alumnos.");
+			comprobarResultado(biologia);
+
+			Aula matematicas = new Aula("Matemáticas");
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 1", 9.2));
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 2", 4.5));
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 3", 5.4));
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 4", 9.4));
+			comprobarResultado(matematicas);
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 5", 3.4));
+			matematicas.eliminarAlumno("Nerd 5");
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 6", 9.5));
+			System.out.println("Nuevo alumno nerd añadido en posición " + matematicas.AddAlumno("Nerd 7", 10));
+			System.out.println("La posición es " + matematicas.AddAlumno("Alumno 10", 4.5)
+					+ ", por tanto no caben más alumnos nerds.");
+			System.out.println(
+					"La posición es " + matematicas.AddAlumno("Alumno 11", 9) + ", por tanto no caben más alumnos nerds.");
+			comprobarResultado(matematicas);
+		}
+
+		/* He definido una función que me muestre información sobre cada aula. */
+		public static void comprobarResultado(Aula aula) {
+			System.out.println("Se van a comprobar los resultados del aula " + aula.getNombre());
+			System.out.println(aula.toString());
+			System.out.println("La media de " + aula.getNombre() + " es: " + aula.Media());
+			System.out.println("Los aprobados de " + aula.getNombre() + " son:\n" + (aula.Aprobados().toString()));
+			System.out.println("Los suspendidos de " + aula.getNombre() + " son:\n" + (aula.Suspendidos().toString()));
+			System.out.println("De momento, el mejor alumno es " + aula.Mejor().toString() + ". ¡Enhorabuena!");
+			System.out
+					.println("De momento, el peor alumno es " + aula.Peor().toString() + ". Hay que seguir esforzándose.");
+			System.out.println("Ranking: "+aula.ranking().toString());
+		}
+
+	}
