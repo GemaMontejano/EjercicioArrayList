@@ -33,3 +33,21 @@ public class Alumno {
 	
 
 }
+/*Otra forma de hacer el ranking
+		 import java.util.Collections;
+		 import java.util.Comparator
+		 public ArrayList<Alumno>ordenarAlumnosPorNota() {
+		Comparator<Alumno>comparador=new Comparator<Alumno>(){
+		public int compare(Alumnoa1,Alumnoa2){
+		if(a1.getNota()>a2.getNota()) {
+			return-1;
+		}else {
+			return 0;
+		}
+	}
+	};
+	ArrayList<Alumno>listaOrdenada=new ArrayList<>(alumnos);
+	Collections.sort(listaOrdenada,comparador);
+	return listaOrdenada;
+	}
+		}*/
