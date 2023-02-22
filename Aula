@@ -1,0 +1,136 @@
+package EjercicioArrayList;
+
+	import java.util.ArrayList;
+	import java.util.Arrays;
+	import java.util.Comparator;
+
+	public class Aula {
+		private String nombre;
+		public ArrayList<Alumno> alumnos;
+
+		public Aula(String nombre) {
+			this.alumnos = new ArrayList<Alumno>();
+			this.setNombre(nombre);
+		}
+
+		private ArrayList<Alumno> getAlumnos() {
+			return this.alumnos;
+		}
+
+		private void setAlumno(Alumno alumno, int index) {
+			this.getAlumnos().set(index, alumno);
+		}
+
+		public String getNombre() {
+			return this.nombre;
+		}
+
+		private void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+
+		public int AddAlumno(String nombre, double nota) {
+			alumnos.add(new Alumno(nombre,nota));
+			return alumnos.size()-1;
+			//Nunca devolverá
+		}
+
+		public double Media() {
+			if(alumnos.size()==0) {
+				return -1;
+			}else {
+				double suma=0;
+				for(Alumno alumno:alumnos) {
+					suma+=alumno.getNota();
+				}
+				return suma/alumnos.size();
+			}
+		}
+		public ArrayList<Alumno> Aprobados() {
+			ArrayList <Alumno> aprobados=new ArrayList<>();
+			for(Alumno alumno:alumnos) {
+				if(alumno.getNota()>=5) {
+					aprobados.add(alumno);
+				}
+			}
+			return aprobados;
+		}
+		public ArrayList<Alumno> Suspendidos() {
+			ArrayList <Alumno> aprobados=new ArrayList<>();
+			for(Alumno alumno:alumnos) {
+				if(alumno.getNota()<5) {
+					aprobados.add(alumno);
+				}
+			}
+			return aprobados;
+		}
+		public Alumno Mejor() {
+			if(alumnos.size()==0) {
+				return null;
+			}else {
+				Alumno mejor=alumnos.get(0);
+				for(Alumno alumno:alumnos) {
+					if(alumno.getNota()>mejor.getNota()) {
+						mejor=alumno;
+					}
+				}
+				return mejor;
+			}
+		}
+		public Alumno Peor() {
+			if(alumnos.size()==0) {
+				return null;
+			}else {
+				Alumno peor=alumnos.get(0);
+				for(Alumno alumno:alumnos) {
+					if(alumno.getNota()<peor.getNota()) {
+						peor=alumno;
+					}
+				}
+				return peor;
+			}
+		}
+		
+		public boolean eliminarAlumno(String nombre) {
+			boolean found=false;
+			for(int i=0;i<alumnos.size()&&!found;i++) {
+				if(alumnos.get(i).getNombre().equals(nombre)) {
+					alumnos.remove(i);
+					found=true;
+				}
+			}
+			return found;
+		}
+		
+		public ArrayList<Alumno> ranking(){
+			ArrayList<Alumno> alumnosOrdenadosPorNota=new ArrayList<>();
+			alumnosOrdenadosPorNota.addAll(alumnos);
+			int n = alumnosOrdenadosPorNota.size();
+			
+		    for (int i = 1; i < n; ++i) {
+		        Alumno key = alumnosOrdenadosPorNota.get(i);
+		        int j = i - 1;
+
+		        while (j >= 0 && alumnosOrdenadosPorNota.get(j).getNota() < key.getNota()) {
+		        	alumnosOrdenadosPorNota.set(j+1,alumnosOrdenadosPorNota.get(j));
+		            j = j - 1;
+		        }
+		        alumnosOrdenadosPorNota.set(j+1,key);
+		    }
+			return alumnosOrdenadosPorNota;
+		}
+		
+
+		@Override
+		public String toString() {
+			String alumnosString="[";
+			for(int i=0; i<alumnos.size();i++) {
+				if(i==alumnos.size()) {
+					alumnosString+=alumnos.get(i)+"]";
+				}else {
+					alumnosString+=alumnos.get(i)+",";
+				}
+			}
+			return alumnosString;
+		}
+	}
